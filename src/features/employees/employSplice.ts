@@ -32,7 +32,7 @@ interface NewEmployState {
 }
 
 const initialState: EmployState | CurrentEmployState | NewEmployState = {
- employees: !JSON.parse(localStorage.getItem('employees') || '[]')
+ employees: JSON.parse(localStorage.getItem('data') || '{}')
   ? [
      {
       id: 1,
@@ -171,7 +171,7 @@ const initialState: EmployState | CurrentEmployState | NewEmployState = {
       birthday: '03.12.1994',
      },
     ]
-  : JSON.parse(localStorage.getItem('employees') || '[]'),
+  : JSON.parse(localStorage.getItem('data') || '{}'),
  currentEmployeer: {},
  newEmployeer: {},
 };

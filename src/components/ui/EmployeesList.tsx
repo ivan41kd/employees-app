@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { AddButton } from './AddButton/AddButton';
 export const EmployeesList = () => {
  const data = useSelector((state: any) => state.employees.employees);
+ console.log(data);
  const navigate = useNavigate();
  return (
   <div className='main__list-wrapper'>
