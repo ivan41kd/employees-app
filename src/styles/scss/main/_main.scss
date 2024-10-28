@@ -1,0 +1,129 @@
+.main {
+ display: flex;
+ justify-content: center;
+ &__list-wrapper {
+  border-radius: rem(10px);
+  padding: rem(30px);
+  -webkit-box-shadow: 0px 0px rem(10px) rem(9px) rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 0px 0px rem(10px) rem(9px) rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 0px rem(10px) rem(9px) rgba(34, 60, 80, 0.2);
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  row-gap: rem(15px);
+  @include onlymobile {
+   padding: rem(20px);
+  }
+ }
+ &__employeer {
+  border: rem(1px) rgba(128, 128, 128, 0.192) solid;
+  padding: rem(10px);
+  border-radius: rem(10px);
+  display: flex;
+  column-gap: rem(30px);
+  transition: 0.3s;
+  justify-content: space-between;
+  cursor: pointer;
+  &:hover {
+   transition: 0.3s;
+   background: rgba(0, 0, 0, 0.048);
+  }
+ }
+ &__employeer-item {
+  font-size: rem(14px);
+  @include onlymobile {
+   font-size: rem(10px);
+  }
+ }
+ &__sort {
+  display: flex;
+  justify-content: space-between;
+  column-gap: rem(30px);
+  @include onlymobile {
+   flex-wrap: wrap;
+   align-items: center;
+   flex-direction: column;
+   row-gap: rem(10px);
+  }
+ }
+ &__sort-option-name {
+  font-size: rem(14px);
+  @include onlymobile {
+   font-size: rem(10px);
+  }
+ }
+ &__sort-option,
+ &__select-option,
+ &__add-button,
+ &__save-button {
+  background: rgba(128, 128, 128, 0.171);
+  border-radius: rem(10px);
+  width: fit-content;
+  padding: rem(15px);
+  position: relative;
+  transition: 0.3s;
+  &:hover {
+   transition: 0.3s;
+   background: rgba(0, 0, 0, 0.219);
+   cursor: pointer;
+  }
+ }
+ &__add-button,
+ &__save-button {
+  font-size: rem(14px);
+  @include onlymobile {
+   align-self: center;
+   font-size: rem(10px);
+  }
+ }
+ &__sort-option-dropdown,
+ &__select-option-dropdown {
+  opacity: 0;
+  overflow: hidden;
+  visibility: hidden;
+  background: rgba(128, 128, 128, 0.171);
+  backdrop-filter: blur(rem(5px));
+  border-radius: rem(10px);
+  padding: rem(15px);
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 125%;
+  height: 0;
+  transition: 0.3s;
+  z-index: 5;
+ }
+ &__select-option-dropdown {
+  width: rem(150px);
+ }
+ &__sort-option-dropdown.active,
+ &__select-option-dropdown.active {
+  opacity: 1;
+  visibility: visible;
+  transition: 0.3s;
+  height: rem(150px);
+ }
+ &__sort-option-dropdown-item,
+ &__select-option-dropdown-item {
+  padding: rem(10px);
+  transition: 0.3s;
+  font-size: rem(14px);
+  @include onlymobile {
+   font-size: rem(12px);
+  }
+  &:hover {
+   transition: 0.3s;
+   background: rgba(0, 0, 0, 0.219);
+   cursor: pointer;
+  }
+ }
+ &__select {
+  display: flex;
+  flex-direction: column;
+  row-gap: rem(10px);
+ }
+ &__select-chk-wrapper {
+  display: flex;
+  column-gap: rem(30px);
+ }
+}
