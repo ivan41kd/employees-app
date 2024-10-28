@@ -1,4 +1,3 @@
-import { SaveButton } from '../SaveButton/SaveButton';
 import { SortName } from './SortName/SortName';
 import { SortRole } from './SortRole/SortRole';
 import { SortStatus } from './SortStatus/SortStatus';

@@ -19,7 +19,7 @@ export const SortStatus = () => {
     <li
      className='main__sort-option-dropdown-item'
      data-status={true}
-     onClick={(e) => {
+     onClick={(e: any) => {
       dispatch(sortEmployeeByStatus(e.target.dataset.status));
      }}
     >
@@ -28,7 +28,7 @@ export const SortStatus = () => {
     <li
      className='main__sort-option-dropdown-item'
      data-status={false}
-     onClick={(e) => {
+     onClick={(e: any) => {
       dispatch(sortEmployeeByStatus(e.target.dataset.status));
      }}
     >

@@ -1,15 +1,12 @@
-import { RootState } from '@reduxjs/toolkit/query';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { setEmployee } from '../../../../features/employees/employSplice';
-import { useState } from 'react';
 
 export const SelectStatus = () => {
  const { id }: any = useParams();
- const data = useSelector((state: RootState) => state.employees.employees);
+ const data = useSelector((state: any) => state.employees.employees);
  const employeerData = data.filter((employeer: any) => employeer.id == id);
  const dispatch = useDispatch();
- const [checked, setChecked] = useState();
 
  return (
   <div className='main__select-status'>

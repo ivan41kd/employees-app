@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
 
 interface EmployState {
  employees: {
@@ -33,7 +32,7 @@ interface NewEmployState {
 }
 
 const initialState: EmployState | CurrentEmployState | NewEmployState = {
- employees: !JSON.parse(localStorage.getItem('employees'))
+ employees: !JSON.parse(localStorage.getItem('employees') || '[]')
   ? [
      {
       id: 1,
@@ -172,7 +171,7 @@ const initialState: EmployState | CurrentEmployState | NewEmployState = {
       birthday: '03.12.1994',
      },
     ]
-  : JSON.parse(localStorage.getItem('employees')),
+  : JSON.parse(localStorage.getItem('employees') || '[]'),
  currentEmployeer: {},
  newEmployeer: {},
 };
@@ -181,14 +180,14 @@ export const employSlice = createSlice({
  name: 'employees',
  initialState,
  reducers: {
-  addEmployee: (state, action) => {
+  addEmployee: (state: any) => {
    state.employees.push(state.newEmployeer);
    localStorage.setItem('employees', JSON.stringify(state.employees));
   },
-  sortEmployeeByRole: (state, action) => {
+  sortEmployeeByRole: (state: any, action) => {
    const roleToSort = action.payload;
 
-   state.employees.sort((a: string, b: string) => {
+   state.employees.sort((a: string | any, b: string | any) => {
     const roleComparison = a.role.localeCompare(b.role);
 
     if (roleComparison === 0) return 0;
@@ -198,9 +197,9 @@ export const employSlice = createSlice({
     return roleComparison;
    });
   },
-  sortEmployeeByStatus: (state, action) => {
+  sortEmployeeByStatus: (state: any, action) => {
    const statusToSort = JSON.parse(action.payload);
-   state.employees.sort((a: boolean, b: boolean) => {
+   state.employees.sort((a: any, b: any) => {
     if (a.isArchive === statusToSort) {
      return -1;
     }
@@ -210,9 +209,9 @@ export const employSlice = createSlice({
     return Number(a.isArchive) - Number(b.isArchive);
    });
   },
-  sortEmployeeByName: (state, action) => {
+  sortEmployeeByName: (state: any, action) => {
    const nameToSort = action.payload;
-   state.employees.sort((a: string, b: string) => {
+   state.employees.sort((a: string | any, b: string | any) => {
     const nameComparison = a.name.localeCompare(b.name);
 
     if (nameComparison === 0) return 0;
@@ -222,16 +221,16 @@ export const employSlice = createSlice({
     return nameComparison;
    });
   },
-  sortEmployeeByDate: (state) => {
-   state.employees.sort((a, b) => {
+  sortEmployeeByDate: (state: any) => {
+   state.employees.sort((a: any, b: any) => {
     return (
      new Date(a.birthday.split('.').reverse().join('-')).getTime() -
      new Date(b.birthday.split('.').reverse().join('-')).getTime()
     );
    });
   },
-  setEmployee: (state, action) => {
-   state.employees.map((employeer) => {
+  setEmployee: (state: any, action) => {
+   state.employees.map((employeer: any) => {
     if (employeer.id === Number(action.payload.id)) {
      state.currentEmployeer = employeer;
      action.payload.name
@@ -252,7 +251,7 @@ export const employSlice = createSlice({
     }
    });
   },
-  setNewEmployee: (state, action) => {
+  setNewEmployee: (state: any, action) => {
    state.newEmployeer = {
     id: state.employees[state.employees.length - 1].id + 1,
     name: action.payload.name || state.newEmployeer.name,
@@ -265,8 +264,8 @@ export const employSlice = createSlice({
     birthday: action.payload.birthday || state.newEmployeer.birthday,
    };
   },
-  saveEmployee: (state, action) => {
-   state.employees.map((employeer) => {
+  saveEmployee: (state: any, action) => {
+   state.employees.map((employeer: any) => {
     if (employeer.id === Number(action.payload.id)) {
      employeer = state.currentEmployeer;
      localStorage.setItem('employees', JSON.stringify(state.employees));

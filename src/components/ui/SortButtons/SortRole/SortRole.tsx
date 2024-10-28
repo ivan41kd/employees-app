@@ -18,7 +18,7 @@ export const SortRole = () => {
     <li
      className='main__sort-option-dropdown-item'
      data-role='cook'
-     onClick={(e) => {
+     onClick={(e: any) => {
       dispatch(sortEmployeeByRole(e.target.dataset.role));
      }}
     >
@@ -27,7 +27,7 @@ export const SortRole = () => {
     <li
      className='main__sort-option-dropdown-item'
      data-role='driver'
-     onClick={(e) => {
+     onClick={(e: any) => {
       dispatch(sortEmployeeByRole(e.target.dataset.role));
      }}
     >
@@ -36,7 +36,7 @@ export const SortRole = () => {
     <li
      className='main__sort-option-dropdown-item'
      data-role='waiter'
-     onClick={(e) => {
+     onClick={(e: any) => {
       dispatch(sortEmployeeByRole(e.target.dataset.role));
      }}
     >

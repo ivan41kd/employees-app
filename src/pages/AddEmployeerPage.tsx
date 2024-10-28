@@ -1,19 +1,16 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import MaskedInput from 'react-text-mask';
-import { RootState } from '../store/store';
 import {
  addEmployee,
  setNewEmployee,
 } from '../features/employees/employSplice';
-import { redirect, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export const AddEmployeerPage = () => {
  const navigate = useNavigate();
  const dispatch = useDispatch();
- const newData = useSelector(
-  (state: RootState) => state.employees.newEmployeer
- );
+
  const [isOpen, setOpen] = useState(false);
  const [checked, setChecked] = useState(true);
  const [role, setRole] = useState('Повар');
@@ -71,7 +68,7 @@ export const AddEmployeerPage = () => {
     <MaskedInput
      mask={dateMask}
      defaultValue={'14.01.2003'}
-     onChange={(e) =>
+     onChange={(e: any) =>
       dispatch(setNewEmployee({ birthday: e.currentTarget.value }))
      }
     />
@@ -116,7 +113,7 @@ export const AddEmployeerPage = () => {
       <li
        className='main__select-option-dropdown-item'
        data-role='cook'
-       onClick={(e) => {
+       onClick={(e: any) => {
         setRole(e.target.innerHTML);
         dispatch(setNewEmployee({ role: e.target.dataset.role }));
        }}
@@ -126,7 +123,7 @@ export const AddEmployeerPage = () => {
       <li
        className='main__select-option-dropdown-item'
        data-role='driver'
-       onClick={(e) => {
+       onClick={(e: any) => {
         setRole(e.target.innerHTML);
         dispatch(setNewEmployee({ role: e.target.dataset.role }));
        }}
@@ -136,7 +133,7 @@ export const AddEmployeerPage = () => {
       <li
        className='main__select-option-dropdown-item'
        data-role='waiter'
-       onClick={(e) => {
+       onClick={(e: any) => {
         setRole(e.target.innerHTML);
         dispatch(setNewEmployee({ role: e.target.dataset.role }));
        }}

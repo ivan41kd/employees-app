@@ -1,17 +1,17 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../store/store';
+import { useSelector } from 'react-redux';
+
 import { SortButtons } from './SortButtons/SortButtons';
 import { useNavigate } from 'react-router-dom';
 import { AddButton } from './AddButton/AddButton';
 export const EmployeesList = () => {
- const data = useSelector((state: RootState) => state.employees.employees);
+ const data = useSelector((state: any) => state.employees.employees);
  const navigate = useNavigate();
  return (
   <div className='main__list-wrapper'>
    <SortButtons />
    <AddButton />
    {data ? (
-    data.map((employeer) => {
+    data.map((employeer: any) => {
      return (
       <div
        className='main__employeer'

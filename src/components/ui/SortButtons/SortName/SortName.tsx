@@ -21,7 +21,7 @@ export const SortName = () => {
     <li
      className='main__sort-option-dropdown-item'
      data-sort='name'
-     onClick={(e) => {
+     onClick={(e: any) => {
       dispatch(sortEmployeeByName(e.target.dataset.sort));
      }}
     >
@@ -30,7 +30,7 @@ export const SortName = () => {
     <li
      className='main__sort-option-dropdown-item'
      data-sort='date'
-     onClick={(e) => {
+     onClick={(e: any) => {
       dispatch(sortEmployeeByDate(e.target.dataset.sort));
      }}
     >

@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../store/store';
+
 import MaskedInput from 'react-text-mask';
 import { SelectButtons } from '../components/ui/SelectButtons/SelectButtons';
 import { SaveButton } from '../components/ui/SaveButton/SaveButton';
@@ -8,8 +8,8 @@ import { setEmployee } from '../features/employees/employSplice';
 
 export const EmpployeerPage = () => {
  const { id }: any = useParams();
- const data = useSelector((state: RootState) => state.employees.employees);
- const employeerData = data.filter((employeer) => employeer.id == id);
+ const data = useSelector((state: any) => state.employees.employees);
+ const employeerData = data.filter((employeer: any) => employeer.id == id);
  const dispatch = useDispatch();
 
  const phoneMask = [
@@ -36,7 +36,7 @@ export const EmpployeerPage = () => {
  return (
   <div className='main__list-wrapper'>
    {employeerData &&
-    employeerData.map((employeer) => {
+    employeerData.map((employeer: any) => {
      return (
       <>
        <input
@@ -51,7 +51,7 @@ export const EmpployeerPage = () => {
         mask={phoneMask}
         defaultValue={employeer.phone}
         className=''
-        onChange={(e) =>
+        onChange={(e: any) =>
          dispatch(setEmployee({ id: id, phone: e.currentTarget.value }))
         }
        />
@@ -59,7 +59,7 @@ export const EmpployeerPage = () => {
        <MaskedInput
         mask={dateMask}
         defaultValue={employeer.birthday}
-        onChange={(e) =>
+        onChange={(e: any) =>
          dispatch(setEmployee({ id: id, birthday: e.currentTarget.value }))
         }
        />

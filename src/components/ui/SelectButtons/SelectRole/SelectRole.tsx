@@ -1,4 +1,3 @@
-import { RootState } from '@reduxjs/toolkit/query';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -8,7 +7,7 @@ export const SelectRole = () => {
  const [isOpen, setOpen] = useState(false);
  const [role, setRole] = useState(null);
  const { id }: any = useParams();
- const data = useSelector((state: RootState) => state.employees.employees);
+ const data = useSelector((state: any) => state.employees.employees);
  const employeerData = data.filter((employeer: any) => employeer.id == id);
  const dispatch = useDispatch();
 
@@ -32,7 +31,7 @@ export const SelectRole = () => {
     <li
      className='main__select-option-dropdown-item'
      data-role='cook'
-     onClick={(e) => {
+     onClick={(e: any) => {
       setRole(e.target.innerHTML);
       dispatch(setEmployee({ id: id, role: e.target.dataset.role }));
      }}
@@ -42,7 +41,7 @@ export const SelectRole = () => {
     <li
      className='main__select-option-dropdown-item'
      data-role='driver'
-     onClick={(e) => {
+     onClick={(e: any) => {
       setRole(e.target.innerHTML);
       dispatch(setEmployee({ id: id, role: e.target.dataset.role }));
      }}
@@ -52,7 +51,7 @@ export const SelectRole = () => {
     <li
      className='main__select-option-dropdown-item'
      data-role='waiter'
-     onClick={(e) => {
+     onClick={(e: any) => {
       setRole(e.target.innerHTML);
       dispatch(setEmployee({ id: id, role: e.target.dataset.role }));
      }}
